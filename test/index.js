@@ -1,5 +1,6 @@
 
 var assert = require('assert');
+var should = require('should')
 var delegate = require('..');
 
 describe('.method(name)', function(){
@@ -74,6 +75,7 @@ describe('.access(name)', function(){
 
     obj.type = 'hey';
     obj.type.should.equal('HEY');
+    obj.request.type.should.equal('HEY')
   })
 })
 

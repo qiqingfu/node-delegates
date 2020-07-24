@@ -104,6 +104,9 @@ Delegator.prototype.getter = function(name){
   var target = this.target;
   this.getters.push(name);
 
+  /**
+   * __defineGetter__ 方法可以将一个函数绑定再当前对象指定的属性上, 当那个属性的值被读取时, 你所绑定的函数就会被调用
+   */
   proto.__defineGetter__(name, function(){
     return this[target][name];
   });
@@ -144,6 +147,11 @@ Delegator.prototype.fluent = function (name) {
   var target = this.target;
   this.fluents.push(name);
 
+  /**
+   * 代理一个函数, 在函数内部进行处理
+   * 1. 如果没有参数, 则为获取
+   * 2. 如有存在参数, 则为设置
+   */
   proto[name] = function(val){
     if ('undefined' != typeof val) {
       this[target][name] = val;
